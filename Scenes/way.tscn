@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnrnoey30kqbd"]
+
+[ext_resource type="Script" path="res://Scripts/way_script.gd" id="1_0ngoa"]
+
+[node name="Way" type="Path2D"]
+script = ExtResource("1_0ngoa")
+
+[node name="Line2DRight" type="Line2D" parent="."]
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2DLeft" type="Line2D" parent="."]
+default_color = Color(0, 0, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 4

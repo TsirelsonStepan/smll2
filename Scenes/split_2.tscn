@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1dod7of8abh4"]
+
+[ext_resource type="PackedScene" uid="uid://cnrnoey30kqbd" path="res://Scenes/way.tscn" id="1_8ybap"]
+
+[sub_resource type="Curve2D" id="Curve2D_jmgg4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -200, -175, 0, 0, 0, 0, -450, -425)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_8kstp"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 200, -175, 0, 0, 0, 0, 450, -425)
+}
+point_count = 2
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_0rxeb"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3gdej"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mj6qy"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_n4lsx"]
+
+[node name="Split2" type="Node2D"]
+
+[node name="Way" parent="." instance=ExtResource("1_8ybap")]
+curve = SubResource("Curve2D_jmgg4")
+
+[node name="Way2" parent="." instance=ExtResource("1_8ybap")]
+curve = SubResource("Curve2D_8kstp")
+
+[node name="Line2DLeft" type="Line2D" parent="."]
+points = PackedVector2Array(-50, 0, -235, -140)
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2DRight" type="Line2D" parent="."]
+points = PackedVector2Array(50, 0, 235, -140)
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="."]
+points = PackedVector2Array(-165, -235, 0, -220, 165, -235)
+default_color = Color(0, 0, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="LeftCollider" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_0rxeb")
+
+[node name="RightCollider" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_3gdej")
+
+[node name="LeftUpperCollider" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_mj6qy")
+
+[node name="RightUpperCollider" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_n4lsx")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0qsniev6ysg"]
+
+[ext_resource type="Script" path="res://Zones/acceleration_script.gd" id="1_geq3b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rxjwo"]
+radius = 45.0
+
+[node name="AccelerationZone" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_geq3b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rxjwo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_collide"]

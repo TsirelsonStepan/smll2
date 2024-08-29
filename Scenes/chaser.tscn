@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfb276fx3j6sx"]
+
+[ext_resource type="Script" path="res://Scripts/enemy_script.gd" id="1_hf2dc"]
+[ext_resource type="Texture2D" uid="uid://cq1vp2qox4byu" path="res://Sprites/chaser.svg" id="2_dxweb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ojg17"]
+radius = 13.0
+
+[node name="Chaser" type="RigidBody2D"]
+collision_layer = 3
+collision_mask = 3
+gravity_scale = 0.0
+script = ExtResource("1_hf2dc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dxweb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ojg17")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 8
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_collision"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
