@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cj6t4cxecdbf4"]
+
+[ext_resource type="PackedScene" uid="uid://t3txehriflg5" path="res://Scenes/player.tscn" id="1_8enp1"]
+[ext_resource type="PackedScene" uid="uid://cnrnoey30kqbd" path="res://Scenes/way.tscn" id="1_spbad"]
+
+[sub_resource type="Curve2D" id="Curve2D_tkecg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -200, 0, 0, 0, 0, 0, -400, 0, 0, 0, 0, 0, -600, 0, 0, 0, 0, 0, -800, 0, 0, 0, 0, 0, -1000, 0, 0, 0, 0, 0, -1200)
+}
+point_count = 7
+
+[sub_resource type="LabelSettings" id="LabelSettings_jqocq"]
+font_size = 42
+font_color = Color(0, 0, 0, 1)
+
+[node name="Game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_8enp1")]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2(10, 10)
+zoom = Vector2(2, 2)
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 4.0
+default_color = Color(0.164706, 0.266667, 0.878431, 1)
+
+[node name="MainWay" parent="." instance=ExtResource("1_spbad")]
+curve = SubResource("Curve2D_tkecg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "score"
+label_settings = SubResource("LabelSettings_jqocq")
